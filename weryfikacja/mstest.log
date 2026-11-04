@@ -1,0 +1,24 @@
+MSTest — zaliczone: 22, błędy: 0
+
+OK  AddSetsNewStatus
+OK  CollectionNotifies
+OK  DeleteRemovesOnlySelected
+OK  DraftDoesNotLeakAndCancelDiscards
+OK  EditPreservesIdentityAndStatus
+OK  IdsAreUnique
+OK  InvalidAddDoesNotWrite
+OK  InvalidEditIsAtomic
+OK  InvalidFormDisablesSave
+OK  MissingIdsReturnErrors
+OK  QueryDoesNotModifyData
+OK  RepositoryRejectsDuplicateId
+OK  RequiredFields
+OK  SameStatusDoesNotNotify
+OK  SeparateInstancesAreIsolated
+OK  StatusAndPropertiesNotify
+OK  TrimBeforeLengthCheck
+OK  UnknownPriorityRejected
+OK  UnknownStatusDoesNotWrite
+OK  UnregisteredCommandFailsClearly
+OK  ViewModelEditAndStatusAndDelete
+OK  WhitespaceRejected

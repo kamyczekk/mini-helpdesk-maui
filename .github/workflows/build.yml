@@ -1,0 +1,44 @@
+name: Kompilacja Windows i Android oraz MSTest
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.100'
+      - name: Testy MSTest przez własny runner (ten sam csproj)
+        run: dotnet run --project MiniHelpDesk/MiniHelpDesk.csproj -p:HeadlessTests=true
+  maui:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.100'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Instalacja MAUI
+        run: dotnet workload install maui --version 10.0.114
+      - name: Windows (aplikacja bez pakietowania MSIX)
+        run: dotnet build MiniHelpDesk/MiniHelpDesk.csproj -f net10.0-windows10.0.19041.0 -p:TargetFrameworks=net10.0-windows10.0.19041.0 -p:RuntimeIdentifier=win-x64 -c Debug
+      - name: Zależności Android SDK
+        run: dotnet build MiniHelpDesk/MiniHelpDesk.csproj -t:InstallAndroidDependencies -f net10.0-android -p:TargetFrameworks=net10.0-android -p:AndroidSdkDirectory="$env:ANDROID_HOME" -p:JavaSdkDirectory="$env:JAVA_HOME" -p:AcceptAndroidSdkLicenses=true
+      - name: Android APK
+        run: dotnet build MiniHelpDesk/MiniHelpDesk.csproj -f net10.0-android -p:TargetFrameworks=net10.0-android -c Debug -p:AndroidPackageFormats=apk -p:AndroidSdkDirectory="$env:ANDROID_HOME" -p:JavaSdkDirectory="$env:JAVA_HOME"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MiniHelpDesk-Android-debug
+          path: MiniHelpDesk/bin/Debug/net10.0-android/*-Signed.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MiniHelpDesk-Windows-debug
+          path: MiniHelpDesk/bin/Debug/net10.0-windows10.0.19041.0/win-x64/

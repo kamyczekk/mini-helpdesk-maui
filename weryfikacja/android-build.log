@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  Restored /workspace/mini-helpdesk/MiniHelpDesk/MiniHelpDesk.csproj (in 419 ms).
+  MiniHelpDesk -> /workspace/mini-helpdesk/MiniHelpDesk/bin/Debug/net10.0-android/android-arm64/MiniHelpDesk.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:01:13.86
