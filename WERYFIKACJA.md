@@ -42,4 +42,4 @@ APK jest wersją Debug podpisaną automatycznym kluczem testowym, dla urządzeń
 
 ## Dostęp do GitHuba
 
-Próby utworzenia `kamyczekk/mini-helpdesk-maui` przez GraphQL i REST zakończyły się odpowiednio `Resource not accessible by integration (createRepository)` oraz HTTP 403. Nie utworzono zdalnego repozytorium i nie deklarujemy udanego pushu. Projekt jest gotowy do wysłania po udostępnieniu pustego repozytorium. Konfiguracja CI zacznie działać dopiero po pushu i nie jest przedstawiana jako wykonana weryfikacja Windows.
+Repozytorium: https://github.com/kamyczekk/mini-helpdesk-maui. Użytkownik utworzył je po zablokowaniu tworzenia repozytoriów przez integrację GitHuba. Bieżący wynik automatycznych kompilacji jest dostępny w zakładce Actions. Sama obecność konfiguracji CI nie stanowi dowodu wykonanej weryfikacji Windows; lokalne wyniki opisano powyżej.
