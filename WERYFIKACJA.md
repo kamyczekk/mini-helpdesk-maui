@@ -15,7 +15,8 @@ Projekt ma jeden plik `.csproj`. Wybrany zakres: Windows **i** Android.
 | Izolacja danych testowych | Działa w testach | SeparateInstancesAreIsolated |
 | CollectionView z Binding, wspólny XAML | Skompilowano w celu Android | MainPage.xaml, weryfikacja/android-build.log |
 | Android ARM64 APK | Kompilacja udana, bez błędów i ostrzeżeń | weryfikacja/android-build.log |
-| Windows | Kod i CI przygotowane; kompilacja nieuruchomiona w Linux | Platforms/Windows, .github/workflows/build.yml |
+| Android APK w CI na Windows | Kompilacja i zapis artefaktu zakończone powodzeniem | [Przebieg GitHub Actions](https://github.com/kamyczekk/mini-helpdesk-maui/actions/runs/41796016558) |
+| Windows | Kompilacja w CI na Windows zakończona powodzeniem | [Przebieg GitHub Actions](https://github.com/kamyczekk/mini-helpdesk-maui/actions/runs/41796016558), krok Windows |
 | Zachowanie UI na Windows i Androidzie | Do demonstracji na urządzeniach | Scenariusz w URUCHOMIENIE.md; nie deklarujemy wykonania tego pokazu |
 
 ## Rzeczywiście wykonane testy
@@ -43,3 +44,9 @@ APK jest wersją Debug podpisaną automatycznym kluczem testowym, dla urządzeń
 ## Dostęp do GitHuba
 
 Repozytorium: https://github.com/kamyczekk/mini-helpdesk-maui. Użytkownik utworzył je po zablokowaniu tworzenia repozytoriów przez integrację GitHuba. Bieżący wynik automatycznych kompilacji jest dostępny w zakładce Actions. Sama obecność konfiguracji CI nie stanowi dowodu wykonanej weryfikacji Windows; lokalne wyniki opisano powyżej.
+
+## Zakończony przebieg CI
+
+[Przebieg 41796016558](https://github.com/kamyczekk/mini-helpdesk-maui/actions/runs/41796016558) dla commitu `9c1fe161aab1008288e1b7ebde8dd9af68fdb709` zakończył się wynikiem **success**. Testy logiki przeszły na Ubuntu, a kompilacje Windows i Android na runnerze Windows. Opublikowano artefakty `MiniHelpDesk-Windows-debug` oraz `MiniHelpDesk-Android-debug`, dostępne w tym przebiegu. Późniejsza aktualizacja tego dokumentu nie zmienia kodu aplikacji.
+
+Zakończone kompilacje nie zastępują demonstracji interfejsu na Windows i urządzeniu/emulatorze Android.
